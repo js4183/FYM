@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import styled, {css} from "styled-components";
 import media from "styled-media-query";
 
@@ -127,6 +127,15 @@ const NonUserBtn = styled.button`
   `}
 `;
 const Header = () => {
+    const navigate = useNavigate();
+    const toSign = () => {
+        navigate("/sign");
+    }
+
+    const toLogin = () => {
+        navigate("/login");
+    }
+
     return (
         <StyledHeader>
           <LogoLink to="/">
@@ -145,10 +154,10 @@ const Header = () => {
             </StyledNavLink>
           </Nav>
           <NonUserBtns>
-            <NonUserBtn main>
+            <NonUserBtn main onClick={toLogin}>
               로그인
             </NonUserBtn>
-            <NonUserBtn main>
+            <NonUserBtn main onClick={toSign}>
               회원가입
             </NonUserBtn>
           </NonUserBtns>

@@ -70,7 +70,6 @@ const Gatherings = styled.div`
 `;
 const EmptyContainer = styled.div`
   height: 20rem;
-  background-image: url("/schedule_assets/empty-bg.svg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -93,7 +92,7 @@ const Schedule = () => {
                 <LoadingContainer>
                     LoadingContainer
                 </LoadingContainer>
-                    <EmptyContainer>일정이 없어요 💦</EmptyContainer>
+                    <EmptyContainer>일정이 없어요</EmptyContainer>
                     <Gatherings>
                     </Gatherings>
         </Container>

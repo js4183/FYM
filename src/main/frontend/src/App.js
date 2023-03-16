@@ -8,6 +8,8 @@ import Mypage from "./pages/Mypage";
 import Map from "./pages/Map";
 import Intro from "./pages/Intro"
 import Footer from "./components/Footer";
+import Sign from "./components/Sign";
+import Login from "./components/Login";
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
               <Route path="/map" element={<Map/>}/>
               <Route path="/mypage" element={<Mypage/>}/>
               <Route path="/schedule" element={<Schedule/>}/>
+              <Route path="/sign" element={<Sign/>}/>
+              <Route path="/login" element={<Login/>}/>
           </Routes>
           <Footer/>
       </div>
