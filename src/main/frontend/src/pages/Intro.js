@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import media from "styled-media-query";
 
 const LandingContainer = styled.div`
-  background-image: url(${(props) => props.url});
+  //background-image: url(${(props) => props.url});
   background-size: 150%;
   background-position: top center;
   display: flex;

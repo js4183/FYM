@@ -5,6 +5,7 @@ import com.example.FYM.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class UserService {
@@ -25,5 +26,10 @@ public class UserService {
 
     public Boolean checkNick(String nick){
         return userMapper.checkNick(nick);
+    }
+
+    public User login(@RequestBody User login){
+        passwordEncoder.matches(login.getUser_pw(), userMapper.login(login).getUser_pw());
+        return userMapper.login(login);
     }
 }

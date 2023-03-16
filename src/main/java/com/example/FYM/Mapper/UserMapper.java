@@ -15,4 +15,7 @@ public interface UserMapper {
 
     @Select("Select user_nick from tb_user where user_nick=#{nick}")
     public Boolean checkNick(String nick);
+
+    @Select("Select * from tb_user where user_email=#{user_email}")
+    public User login(User login);
 }

@@ -25,4 +25,9 @@ public class UserController {
     public Boolean checkNick(@PathVariable("nick") String nick){
         return userService.checkNick(nick);
     }
+
+    @PostMapping("/login")
+    public User login(@RequestBody User login){
+        return userService.login(login);
+    }
 }

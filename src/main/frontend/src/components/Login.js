@@ -86,11 +86,11 @@ const SignIn = ({connect}) => {
             user_pw : pw,
         }).then((res) => {
             const user_info = res.data;
-            if(inputValue.id === user_info.user_email){
+            if(inputValue.email === user_info.user_email){
                 window.sessionStorage.setItem('user_info', JSON.stringify(user_info));
                 let user_nick = user_info.user_nick;
                 navigate("/");
-                connect();
+                // connect();
             }
         })
             .catch((err)=>{
