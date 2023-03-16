@@ -18,4 +18,12 @@ public class UserService {
         sign.setUser_pw(passwordEncoder.encode(sign.getUser_pw()));
         return userMapper.sign(sign);
     }
+
+    public Boolean checkEmail(String email){
+        return userMapper.checkEmail(email);
+    }
+
+    public Boolean checkNick(String nick){
+        return userMapper.checkNick(nick);
+    }
 }

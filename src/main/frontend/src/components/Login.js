@@ -60,15 +60,15 @@ const LoginFooter = styled.div`
 `;
 
 const SignIn = ({connect}) => {
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [inputValue, setInputValue] = useState({
-        id:"",
+        email:"",
         pw:"",
     });
 
     const {
-        id,
+        email,
         pw,
     } = inputValue;
 
@@ -82,14 +82,14 @@ const SignIn = ({connect}) => {
 
     const toLogin = () => {
         axios.post("/user/login",{
-            user_id : id,
+            user_email : email,
             user_pw : pw,
         }).then((res) => {
             const user_info = res.data;
-            if(inputValue.id === user_info.user_id){
+            if(inputValue.id === user_info.user_email){
                 window.sessionStorage.setItem('user_info', JSON.stringify(user_info));
-                // let user_nick = user_info.user_nick;
-                Navigate("/");
+                let user_nick = user_info.user_nick;
+                navigate("/");
                 connect();
             }
         })
@@ -99,7 +99,7 @@ const SignIn = ({connect}) => {
     }
 
     const toSignUp = () =>{
-        Navigate("/Sign")
+        navigate("/Sign")
     }
     const handleOnKeyPress = e => {
         if (e.key === 'Enter') {
@@ -116,7 +116,7 @@ const SignIn = ({connect}) => {
                     className="idInput"
                     onChange={handleInput}
                     type="text"
-                    name="id"/>
+                    name="email"/>
             </div>
             <P>비밀번호</P>
             <div>

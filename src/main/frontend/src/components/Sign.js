@@ -62,7 +62,7 @@ const CheckBtn = styled.button`
 const Sign = () => {
     const navigate = useNavigate();
     const [inputValue, setInputValue] = useState({
-        id: "",
+        email: "",
         pw1: "",
         pw2: "",
         nick: "",
@@ -76,7 +76,7 @@ const Sign = () => {
     );
     const [pwAlertSentence, setPwAlertSentence] = useState("");
     const {
-        id,
+        email,
         pw1,
         pw2,
         nick,
@@ -92,7 +92,7 @@ const Sign = () => {
 
     const addUser = () => {
         axios.post("/user/sign",{
-            user_id: id,
+            user_email: email,
             user_pw: pw2,
             user_nick: nick,
         })
@@ -104,9 +104,9 @@ const Sign = () => {
             });
     };
 
-    const idCheck = (id) => {
-        let regId = /[a-z0-9]{4,16}$/;
-        if (regId.test(id)) {
+    const emailCheck = (email) => {
+        let regEmail = /[a-z0-9]{4,16}$/;
+        if (regEmail.test(email)) {
             setIdAlertSentence("사용가능한 아이디입니다");
         } else {
             setIdAlertSentence("올바르지 않은 아이디입니다");
@@ -123,33 +123,27 @@ const Sign = () => {
         }
     };
 
-    const checkId = () => {
-        axios.post("/user/checkid",{
-            user_id:id,
-        })
+    const checkEmail = () => {
+        axios.get(`/user/checkemail/${email}`)
             .then((res)=>{
-                console.log(res.data);
-                if(res.data===1){
-                    setIdAlertSentence("이미 있는 아이디입니다");
+                if(res.data==true){
+                    alert("이미 사용중인 아이디입니다.");
                 }else{
-                    setIdAlertSentence("사용가능한 아이디입니다");
+                    alert("사용 가능한 아이디입니다.");
                 }
             })
             .catch((err)=>{
                 console.log(err);
             })
-    }
+    };
 
     const checkNick = () => {
-        axios.post("/user/checknick",{
-            user_nick:nick,
-        })
+        axios.get(`/user/checknick/${nick}`)
             .then((res)=>{
-                console.log(res);
-                if(res.data===1){
-                    setNickAlertSentence("이미 있는 닉네임입니다");
+                if(res.data==true){
+                    alert("이미 사용중인 닉네임입니다.");
                 }else{
-                    setNickAlertSentence("사용가능한 닉네임입니다");
+                    alert("사용 가능한 닉네임입니다.");
                 }
             })
             .catch((err)=>{
@@ -167,15 +161,15 @@ const Sign = () => {
                         type="text"
                         className="userInput"
                         onChange={handleInput}
-                        onBlur={() => idCheck(id)}
-                        name="id"
+                        onBlur={() => emailCheck(email)}
+                        name="email"
                     />
                     <div className="inputDescription">{idAlertSentence}</div>
                 </div>
-                <CheckBtn onClick={checkId}
+                <CheckBtn onClick={checkEmail}
                           disabled={
                               !(
-                                  id.length > 3
+                                  email.length > 3
                               )}>아이디 중복확인</CheckBtn>
             </InputContainer>
             <P>비밀번호</P>
@@ -213,7 +207,7 @@ const Sign = () => {
                 <CheckBtn onClick={checkNick}
                           disabled={
                               !(
-                                  nick.length >=2 && nick.length <=6
+                                  nick.length >=2 && nick.length <=12
                               )}>닉네임 중복확인</CheckBtn>
             </InputContainer>
 
@@ -222,9 +216,9 @@ const Sign = () => {
                 className="signupBtn"
                 disabled={
                     !(
-                        id.length > 3 &&
+                        email.length > 3 &&
                         pw2.length > 3 &&
-                        nick.length >=2 && nick.length <=6
+                        nick.length >=2 && nick.length <=12
                     )
                 }
             >
