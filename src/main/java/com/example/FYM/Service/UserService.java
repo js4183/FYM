@@ -20,8 +20,8 @@ public class UserService {
         return userMapper.sign(sign);
     }
 
-    public Boolean checkEmail(String email){
-        return userMapper.checkEmail(email);
+    public Boolean checkId(String id){
+        return userMapper.checkId(id);
     }
 
     public Boolean checkNick(String nick){

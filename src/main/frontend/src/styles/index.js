@@ -56,37 +56,6 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
   /* CSS Custom Properties Definitions */
-  /* 웹 상에서 font weight이 굵게 보이는 이유로, font-family 실제와 다르게 선언  */
-  @font-face {
-    font-family: Interop-Light;
-    src: url('../fonts/Interop-Light.woff') format('woff'), url('../fonts/Interop-Light.woff2') format('woff2'), url('../fonts/Interop-ExtraLight.otf') format('opentype');
-    unicode-range: U+0000-U+FFFF;
-  }
-  @font-face {
-    font-family: Interop-Regular;
-    src: url('../fonts/Interop-Regular.woff') format('woff'), url('../fonts/Interop-Regular.woff2') format('woff2'), url('../fonts/Interop-Light.otf') format('opentype');
-    unicode-range: U+0000-U+FFFF;
-  }
-  @font-face {
-    font-family: Interop-Medium;
-    src: url('../fonts/Interop-Medium.woff') format('woff'), url('../fonts/Interop-Medium.woff2') format('woff2'), url('../fonts/Interop-Regular.otf') format('opentype');
-    unicode-range: U+0000-U+FFFF;
-  }
-  @font-face {
-    font-family: Interop-SemiBold;
-    src: url('../fonts/Interop-SemiBold.woff') format('woff'), url('../fonts/Interop-SemiBold.woff2') format('woff2'), url('../fonts/Interop-Medium.otf') format('opentype');
-    unicode-range: U+0000-U+FFFF;
-  }
-  @font-face {
-    font-family: Interop-Bold;
-    src: url('../fonts/Interop-Bold.woff') format('woff'), url('../fonts/Interop-Bold.woff2') format('woff2'), url('../fonts/Interop-SemiBold.otf') format('opentype');
-    unicode-range: U+0000-U+FFFF;
-  }
-  @font-face {
-    font-family: Interop-ExtraBold;
-    src: url('../fonts/Interop-ExtraBold.woff') format('woff'), url('../fonts/Interop-ExtraBold.woff2') format('woff2'), url('../fonts/Interop-ExtraBold.otf') format('opentype');
-    unicode-range: U+0000-U+FFFF;
-  }
   :root {
     --fontFamily: Interop-Medium, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --fontSize-root--big: 16px;

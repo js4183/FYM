@@ -16,9 +16,9 @@ public class UserController {
         return userService.sign(sign);
     }
 
-    @GetMapping("/checkemail/{email}")
-    public Boolean checkEmail(@PathVariable("email") String email){
-        return userService.checkEmail(email);
+    @GetMapping("/checkid/{id}")
+    public Boolean checkId(@PathVariable("id") String id){
+        return userService.checkId(id);
     }
 
     @GetMapping("/checknick/{nick}")

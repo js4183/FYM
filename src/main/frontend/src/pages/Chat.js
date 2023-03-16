@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import axios from "axios";
 import styled from "styled-components";
 
 const GlobalStyle = styled.div`
@@ -90,7 +91,15 @@ margin-bottom: 13px;
 const FooterBtn = styled.button`
 `
 
-const Chat = () => {
+const Chat = ({ socket }) => {
+    //소켓에서 오는 메세지를 받는 함수
+    socket.onmessage = function (event) {
+        let message = JSON.parse(event.data);
+        console.log(message)
+        // message.talker !== undefined &&
+        // setMsgList(msgList.concat({ cr_idx: message.cr_idx, board_idx: message.board_idx, talker: message.talker, msg: message.msg, sendto: message.sendto }))
+    };
+
     return (
         <GlobalStyle>
             <ChatContainer>

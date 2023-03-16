@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
@@ -12,8 +12,31 @@ import Sign from "./components/Sign";
 import Login from "./components/Login";
 
 function App() {
+    //socket 연결시 소켓 정보 저장
+    const [socket, setSocket] = useState();
 
-  return (
+    useEffect(()=>{
+        console.log(socket)
+        socket && connect();
+    },[])
+
+    // socket 연결할때 실행할 함수
+    function connect() {
+        let ws = new WebSocket("ws://localhost:8090/socket")
+        setSocket(ws)
+        ws.onopen = () => {
+            console.log("websocket: connected")
+            // ws.send("sending message from client-server")
+        }
+        ws.onclose = function (event) {
+            console.log('Info: connection closed.');
+            // setTimeout( function(){connect()}, 1000)
+        };
+        ws.onerror = function (event) { console.log('Info: connection closed.'); };
+        setSocket(ws);
+    }
+
+    return (
       <div>
           <Header/>
           <Routes>

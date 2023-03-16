@@ -62,7 +62,7 @@ const CheckBtn = styled.button`
 const Sign = () => {
     const navigate = useNavigate();
     const [inputValue, setInputValue] = useState({
-        email: "",
+        id: "",
         pw1: "",
         pw2: "",
         nick: "",
@@ -76,7 +76,7 @@ const Sign = () => {
     );
     const [pwAlertSentence, setPwAlertSentence] = useState("");
     const {
-        email,
+        id,
         pw1,
         pw2,
         nick,
@@ -92,7 +92,7 @@ const Sign = () => {
 
     const addUser = () => {
         axios.post("/user/sign",{
-            user_email: email,
+            user_id: id,
             user_pw: pw2,
             user_nick: nick,
         })
@@ -104,12 +104,20 @@ const Sign = () => {
             });
     };
 
-    const emailCheck = (email) => {
-        let regEmail = /[a-z0-9]{4,16}$/;
-        if (regEmail.test(email)) {
+    const idCheck = (id) => {
+        let regId = /[a-z0-9]{4,16}$/;
+        if (regId.test(id)) {
             setIdAlertSentence("사용가능한 아이디입니다");
         } else {
             setIdAlertSentence("올바르지 않은 아이디입니다");
+        }
+    };
+    const nickCheck = (nick) => {
+        let regNick = /^[a-z0-9\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]{2,12}$/;
+        if (regNick.test(nick)) {
+            setNickAlertSentence("사용가능한 닉네임입니다");
+        } else {
+            setNickAlertSentence("올바르지 않은 닉네임입니다");
         }
     };
 
@@ -123,10 +131,10 @@ const Sign = () => {
         }
     };
 
-    const checkEmail = () => {
-        axios.get(`/user/checkemail/${email}`)
+    const checkId = () => {
+        axios.get(`/user/checkid/${id}`)
             .then((res)=>{
-                if(res.data==true){
+                if(res.data===true){
                     alert("이미 사용중인 아이디입니다.");
                 }else{
                     alert("사용 가능한 아이디입니다.");
@@ -140,7 +148,7 @@ const Sign = () => {
     const checkNick = () => {
         axios.get(`/user/checknick/${nick}`)
             .then((res)=>{
-                if(res.data==true){
+                if(res.data===true){
                     alert("이미 사용중인 닉네임입니다.");
                 }else{
                     alert("사용 가능한 닉네임입니다.");
@@ -161,15 +169,15 @@ const Sign = () => {
                         type="text"
                         className="userInput"
                         onChange={handleInput}
-                        onBlur={() => emailCheck(email)}
-                        name="email"
+                        onBlur={() => idCheck(id)}
+                        name="id"
                     />
                     <div className="inputDescription">{idAlertSentence}</div>
                 </div>
-                <CheckBtn onClick={checkEmail}
+                <CheckBtn onClick={checkId}
                           disabled={
                               !(
-                                  email.length > 3
+                                  id.length > 3
                               )}>아이디 중복확인</CheckBtn>
             </InputContainer>
             <P>비밀번호</P>
@@ -200,6 +208,7 @@ const Sign = () => {
                         type="text"
                         className="nickInput"
                         onChange={handleInput}
+                        onBlur={() => nickCheck(nick)}
                         name="nick"
                     />
                     <div className="inputDescription">{nickAlertSentence}</div>
@@ -216,7 +225,7 @@ const Sign = () => {
                 className="signupBtn"
                 disabled={
                     !(
-                        email.length > 3 &&
+                        id.length > 3 &&
                         pw2.length > 3 &&
                         nick.length >=2 && nick.length <=12
                     )

@@ -63,12 +63,12 @@ const SignIn = ({connect}) => {
     const navigate = useNavigate();
 
     const [inputValue, setInputValue] = useState({
-        email:"",
+        id:"",
         pw:"",
     });
 
     const {
-        email,
+        id,
         pw,
     } = inputValue;
 
@@ -82,15 +82,14 @@ const SignIn = ({connect}) => {
 
     const toLogin = () => {
         axios.post("/user/login",{
-            user_email : email,
+            user_id : id,
             user_pw : pw,
         }).then((res) => {
             const user_info = res.data;
-            if(inputValue.email === user_info.user_email){
+            if(inputValue.id === user_info.user_id){
                 window.sessionStorage.setItem('user_info', JSON.stringify(user_info));
-                let user_nick = user_info.user_nick;
                 navigate("/");
-                // connect();
+                connect();
             }
         })
             .catch((err)=>{
@@ -116,7 +115,7 @@ const SignIn = ({connect}) => {
                     className="idInput"
                     onChange={handleInput}
                     type="text"
-                    name="email"/>
+                    name="id"/>
             </div>
             <P>비밀번호</P>
             <div>
