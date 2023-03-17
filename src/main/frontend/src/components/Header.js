@@ -126,6 +126,43 @@ const NonUserBtn = styled.button`
     margin-left: 0.25rem;
   `}
 `;
+
+const UserInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: calc(-4.5rem - 3px);
+  right: 0;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-lightgray);
+  ${media.lessThan("medium")`
+    display: none;
+  `};
+`;
+
+const UserInfoMyPageBtn = styled(Link)`
+  background-color: var(--color-white);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  border-bottom: 1px solid var(--color-lightgray);
+  transition: background-color 100ms ease-out;
+  :hover {
+    background-color: var(--color-darkwhite);
+  }
+`;
+
+const UserInfoLogoutBtn = styled.button`
+  color: var(--color-red);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background-color: var(--color-white);
+  transition: background-color 100ms ease-out;
+  :hover {
+    background-color: var(--color-red--25);
+  }
+`;
 const Header = () => {
     const navigate = useNavigate();
     const toSign = () => {
@@ -135,6 +172,10 @@ const Header = () => {
     const toLogin = () => {
         navigate("/login");
     }
+    const toLogout = () => {
+        sessionStorage.removeItem('user_info');
+        navigate("/");
+    }
 
     return (
         <StyledHeader>
@@ -142,6 +183,8 @@ const Header = () => {
             <LongLogo>FindYourMate</LongLogo>
             <ShortLogo>FYM</ShortLogo>
           </LogoLink>
+            {sessionStorage.user_info !=null?(
+        <>
           <Nav>
             <StyledNavLink to ="/home">
               <Text>홈</Text>
@@ -153,6 +196,15 @@ const Header = () => {
               <Text>일정</Text>
             </StyledNavLink>
           </Nav>
+        <UserInfo>
+            <UserInfoMyPageBtn to={`/mypage`}>
+                마이페이지
+            </UserInfoMyPageBtn>
+            <UserInfoLogoutBtn onClick={toLogout}>
+                로그아웃
+            </UserInfoLogoutBtn>
+        </UserInfo>
+        </>):(
           <NonUserBtns>
             <NonUserBtn main onClick={toLogin}>
               로그인
@@ -160,7 +212,7 @@ const Header = () => {
             <NonUserBtn main onClick={toSign}>
               회원가입
             </NonUserBtn>
-          </NonUserBtns>
+          </NonUserBtns>)}
         </StyledHeader>
     );
 };

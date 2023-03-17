@@ -10,6 +10,7 @@ import Intro from "./pages/Intro"
 import Footer from "./components/Footer";
 import Sign from "./components/Sign";
 import Login from "./components/Login";
+import MyEdit from "./components/MyEdit";
 
 function App() {
     //socket 연결시 소켓 정보 저장
@@ -20,9 +21,9 @@ function App() {
         socket && connect();
     },[])
 
-    // socket 연결할때 실행할 함수
+    //socket 연결할때 실행할 함수
     function connect() {
-        let ws = new WebSocket("ws://localhost:8090/socket")
+        let ws = new WebSocket("ws://localhost:8080/socket")
         setSocket(ws)
         ws.onopen = () => {
             console.log("websocket: connected")
@@ -47,7 +48,8 @@ function App() {
               <Route path="/mypage" element={<Mypage/>}/>
               <Route path="/schedule" element={<Schedule/>}/>
               <Route path="/sign" element={<Sign/>}/>
-              <Route path="/login" element={<Login/>}/>
+              <Route path="/login" element={<Login connect={connect} socket={socket}/>}/>
+              <Route path="/myedit" element={<MyEdit/>}/>
           </Routes>
           <Footer/>
       </div>

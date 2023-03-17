@@ -32,4 +32,9 @@ public class UserService {
         passwordEncoder.matches(login.getUser_pw(), userMapper.login(login).getUser_pw());
         return userMapper.login(login);
     }
+
+    public int update(@RequestBody User edit){
+        edit.setUser_pw(passwordEncoder.encode(edit.getUser_pw()));
+        return userMapper.update(edit);
+    }
 }

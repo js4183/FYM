@@ -70,8 +70,8 @@ const Footer = () => {
                 <DescWrapper>
                     <Heading>소개</Heading>
                     <Paragraph>
-                        FindYourMate(FYM)는 함께 운동할 사람을 찾고 싶지만 주기적으로 만나기 어렵거나 부담스러운
-                        사람들을 위한 매칭 플랫폼입니다. 운동 종류, 지역, 운동, 날짜와 시간대에 따라 함께 운동할
+                        FindYourMate(FYM)는 함께 할 사람을 찾고 싶지만 주기적으로 만나기 어렵거나 부담스러운
+                        사람들을 위한 매칭 플랫폼입니다. 모임 종류, 지역, 취미, 날짜와 시간대에 따라 함께 할
                         사람을 간편하게 찾을 수 있습니다.
                     </Paragraph>
                 </DescWrapper>

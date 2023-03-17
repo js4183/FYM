@@ -25,7 +25,10 @@ dependencies {
 	implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.2'
 	implementation 'org.springframework.boot:spring-boot-starter-security'    /* Spring security */
 	implementation 'org.springframework.security:spring-security-test'
+	// jjwt dependency
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	// spring-security-jwt dependency
+	implementation 'org.springframework.security:spring-security-jwt:1.1.1.RELEASE'
 	// websocket 사용
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 	implementation 'org.webjars:sockjs-client:1.1.2'

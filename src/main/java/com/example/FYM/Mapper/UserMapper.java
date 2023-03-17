@@ -4,6 +4,7 @@ import com.example.FYM.Model.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface UserMapper {
@@ -18,4 +19,7 @@ public interface UserMapper {
 
     @Select("Select * from tb_user where user_id=#{user_id}")
     public User login(User login);
+
+    @Update("update tb_user set user_nick=#{user_nick}, user_pw=#{user_pw} where user_id=#{user_id}")
+    public int update(User edit);
 }

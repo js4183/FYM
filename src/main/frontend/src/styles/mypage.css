@@ -1,0 +1,72 @@
+#myPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 회원정보 수정 페이지*/
+.userEdit, .deletePage{
+    /*위 오른쪽 아래 왼쪽*/
+    margin: 8rem 0 5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.editBox, .deleteBox{
+    margin-top: 2rem;
+}
+
+.editTitle, .deleteTitle{
+    font-weight: bold;
+    font-size: large;
+    width: 10rem;
+    text-align: left;
+}
+
+.editContent, .deleteContent{
+    width: 15rem;
+}
+
+.editTable tr, .deleteTable tr{
+    height: 4rem;
+}
+
+.editTable input, .deleteTable input{
+    width: 15rem;
+    border: 2px solid #CAFFBE;
+    border-radius: 10px;
+}
+
+.editTable input:focus, .deleteTable input:focus{
+    outline: none;
+}
+
+.nickCK{
+    margin-left: 0.5rem;
+    border: 1px solid #CAFFBE;
+    border-radius: 10px;
+    background-color: #CAFFBE;
+}
+
+.message{
+    font-size: small;
+    color: lightslategray;
+}
+
+.editSubmit, .deleteSubmit{
+    margin-top: 2rem;
+    width: 25rem;
+    height: 3rem;
+    border: 1px solid #CAFFBE;
+    border-radius: 10px;
+    background-color: #CAFFBE;
+}
+
+/*회원 탈퇴 글씨*/
+.userDelete{
+    width: 4rem;
+    margin-left: 65rem;
+    color: #a0a1a2;
+    cursor:pointer
+}

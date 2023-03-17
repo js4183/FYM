@@ -1,130 +1,82 @@
-import React, { useRef, useState, useEffect } from 'react';
-import axios from "axios";
-import styled from "styled-components";
-
-const GlobalStyle = styled.div`
-  * {
-    box-sizing: border-box;
-  }
-`;
-
-const ChatContainer = styled.div`
-  width: 100%;
-  height: 640px;
-  background: #eff3f7;
-  margin: 0 auto;
-  font-size: 0;
-  border-radius: 5px;
-  overflow: hidden;
-`;
-
-const Aside = styled.div`
-  width: 260px;
-  height: 800px;
-  background-color: RGB(54,204,200,0.5);
-  display: inline-block;
-  font-size: 15px;
-  vertical-align: top;
-`;
-
-const Main = styled.div`
-  width: 490px;
-  height: 800px;
-  display: inline-block;
-  font-size: 15px;
-  vertical-align: top;
-`;
-
-const AsideHeader = styled.header`
-  padding: 30px 20px;
-`;
-
-const AsideUl = styled.ul`
-  padding-left: 0;
-  margin: 0;
-  list-style-type: none;
-  overflow-y: auto;
-  height: 690px;
-`;
-
-const AsideLiH2 = styled.h2`
-  font-size: 14px;
-  color: #000000;
-  font-weight: normal;
-  margin-bottom: 5px;
-`;
-
-const AsideLiH3 = styled.h3`
-  font-size: 12px;
-  color: #7e818a;
-  font-weight: normal;
-`;
-
-const MainHeader = styled.header`
-  height: 110px;
-  padding: 30px 20px 30px 30px;
-`;
-
-const MainHeaderDiv = styled.div`
-  margin-left: 10px;
-  margin-right: 145px;
-`;
-
-const MainFooter = styled.div`
-  display: flex;
-  height: 155px;
-  padding: 20px 30px 10px 20px;
-`
-
-const FooterTextarea = styled.textarea`
-resize: none;
-border: none;
-display: block;
-width: 100%;
-height: 80px;
-border-radius: 3px;
-padding: 20px;
-font-size: 13px;
-margin-bottom: 13px;
-`;
-
-const FooterBtn = styled.button`
-`
+import React, { useState } from 'react';
+import '../styles/chat.css'
+// import axios from "axios";
 
 const Chat = ({ socket }) => {
-    //소켓에서 오는 메세지를 받는 함수
-    socket.onmessage = function (event) {
-        let message = JSON.parse(event.data);
-        console.log(message)
-        // message.talker !== undefined &&
-        // setMsgList(msgList.concat({ cr_idx: message.cr_idx, board_idx: message.board_idx, talker: message.talker, msg: message.msg, sendto: message.sendto }))
-    };
+
+    // 로그인한 유저의 닉네임을 저장하는 변수
+    // let nick = JSON.parse(sessionStorage.getItem("user_info")).user_nick;
+
+    // 채팅 메시지를 저장하는 변수
+    const [msg, setMsg] = useState("")
+
+    // 타이핑 중인 메시지를 저장하는 함수(onChange)
+    const sendText = (e) => {
+        setMsg(e.target.value)
+    }
+
+    // 전송 버튼 클릭
+    const sendBtn = () => {
+        if (socket.readyState !== 1) return;
+        socket.send(msg)
+    }
 
     return (
-        <GlobalStyle>
-            <ChatContainer>
-                <Aside>
-                    <AsideHeader>닉네임검색</AsideHeader>
-                    <AsideUl></AsideUl>
-                </Aside>
-                <Main>
-                    <MainHeader>
-                        <MainHeaderDiv>
-                            <AsideLiH2>님과의 채팅입니다.</AsideLiH2>
-                            <AsideLiH3>제목</AsideLiH3>
-                        </MainHeaderDiv>
-                    </MainHeader>
-                    <>
-                    </>
-                    <MainFooter>
-                        <FooterTextarea placeholder="메시지를 입력하세요."/>
-                        <FooterBtn>Send</FooterBtn>
-                    </MainFooter>
-                </Main>
-            </ChatContainer>
-        </GlobalStyle>
-    );
-};
-
-
-export default Chat;
+        <div>
+            <div className="chat-container">
+                <aside>
+                    <header>
+                        <input type="text" placeholder="닉네임 검색" className="nickSearchInput"/>
+                    </header>
+                    <ul>
+                        <li>
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt=""/>
+                            <div>
+                                <h2>상대방 닉네임</h2>
+                                <h3>
+                                    가장 마지막에 입력 된 메시지
+                                </h3>
+                            </div>
+                        </li>
+                    </ul>
+                </aside>
+                <main>
+                    <header>
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt=""/>
+                        <div>
+                            <h2>Chat with 상대방 닉네임</h2>
+                            <h3>채팅을 한 게시글</h3>
+                        </div>
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_star.png" alt=""/>
+                    </header>
+                    <ul id="chat">
+                        <li className="you">
+                            <div className="entete">
+                                <h2>상대방 닉네임</h2>
+                            </div>
+                            <div className="triangle"></div>
+                            <div className="message">
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                            </div>
+                            <h3>10:12AM, Today</h3>
+                        </li>
+                        <li className="me">
+                            <div className="entete">
+                            </div>
+                            <div className="triangle"></div>
+                            <div className="message">
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                            </div>
+                            <h3>10:12AM, Today</h3>
+                        </li>
+                    </ul>
+                    <footer>
+                        <textarea id="msg" onChange={sendText} placeholder="Type your message"></textarea>
+                        <button type="button" onClick={sendBtn}>SEND</button>
+                    </footer>
+                </main>
+            </div>
+        </div>
+    )
+}
+export default Chat

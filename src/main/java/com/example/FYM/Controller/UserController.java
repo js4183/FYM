@@ -30,4 +30,9 @@ public class UserController {
     public User login(@RequestBody User login){
         return userService.login(login);
     }
+
+    @PostMapping("/update")
+    public int update(@RequestBody User edit){
+        return userService.update(edit);
+    }
 }
