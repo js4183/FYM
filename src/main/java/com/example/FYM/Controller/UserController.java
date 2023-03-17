@@ -35,4 +35,9 @@ public class UserController {
     public int update(@RequestBody User edit){
         return userService.update(edit);
     }
+
+    @PostMapping("/delete")
+    public int delete(@RequestBody User delete){
+        return userService.delete(delete);
+    }
 }

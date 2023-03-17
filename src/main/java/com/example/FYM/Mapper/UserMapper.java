@@ -1,10 +1,7 @@
 package com.example.FYM.Mapper;
 
 import com.example.FYM.Model.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface UserMapper {
@@ -22,4 +19,11 @@ public interface UserMapper {
 
     @Update("update tb_user set user_nick=#{user_nick}, user_pw=#{user_pw} where user_id=#{user_id}")
     public int update(User edit);
+
+    //비밀번호 일치 확인
+    @Select("select user_pw from tb_user where user_id = #{user_id}")
+    public String pwCK(User deleteInfo);
+
+    @Delete("delete from tb_user where user_id=#{user_id}")
+    public int delete(User delete);
 }

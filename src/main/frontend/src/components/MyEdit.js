@@ -26,9 +26,6 @@ const MyEdit = () => {
     const nickRef = useRef();
     const pwRef = useRef();
 
-    //수정하기 버튼
-    const [editBtn, setEditBtn] = useState(true);
-
     //비밀번호 유효성 검사
     const onChangePassword = (e) => {
         const currentPassword = e.target.value;

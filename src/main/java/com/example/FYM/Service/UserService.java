@@ -37,4 +37,13 @@ public class UserService {
         edit.setUser_pw(passwordEncoder.encode(edit.getUser_pw()));
         return userMapper.update(edit);
     }
+
+    public int delete(@RequestBody User delete){
+        boolean result = passwordEncoder.matches(delete.getUser_pw(), userMapper.pwCK(delete));
+        if(result==true){
+            return userMapper.delete(delete);
+        }else {
+            return 0;
+        }
+    }
 }

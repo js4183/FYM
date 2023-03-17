@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import Sign from "./components/Sign";
 import Login from "./components/Login";
 import MyEdit from "./components/MyEdit";
+import UserDelete from "./components/UserDelete";
 
 function App() {
     //socket 연결시 소켓 정보 저장
@@ -50,6 +51,7 @@ function App() {
               <Route path="/sign" element={<Sign/>}/>
               <Route path="/login" element={<Login connect={connect} socket={socket}/>}/>
               <Route path="/myedit" element={<MyEdit/>}/>
+              <Route path="/userdelete" element={<UserDelete/>}/>
           </Routes>
           <Footer/>
       </div>
