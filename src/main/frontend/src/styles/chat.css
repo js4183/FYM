@@ -15,7 +15,7 @@
 aside{
     width:260px;
     height:800px;
-    background-color:#36CCC8;
+    background-color:rgb(202, 255, 190);
     display:inline-block;
     font-size:15px;
     vertical-align:top;
@@ -173,7 +173,7 @@ main header h3{
     text-align:right;
 }
 #chat .you .message{
-    background-color:rgba(54, 204, 200, 0.15);
+    background-color:rgb(202, 255, 190);
 }
 #chat .me .message{
     background-color:white;
@@ -185,7 +185,7 @@ main header h3{
     border-width: 0 7px 10px 7px;
 }
 #chat .you .triangle{
-    border-color: transparent transparent rgba(54, 204, 200, 0.15) transparent;
+    border-color: transparent transparent rgb(202, 255, 190) transparent;
     margin-left:15px;
 }
 #chat .me .triangle{

@@ -147,7 +147,7 @@ const Home = () => {
                 <ListHeader>
                         <ListTitle>
                         </ListTitle>
-                        <ListTitle>이런 운동 모임들이 있어요!</ListTitle>
+                        <ListTitle>이런 모임들이 있어요!</ListTitle>
                     <OnMapBtn id="onMapBtn" />
                 </ListHeader>
                     <Gatherings>
