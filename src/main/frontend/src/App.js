@@ -12,6 +12,7 @@ import Sign from "./components/Sign";
 import Login from "./components/Login";
 import MyEdit from "./components/MyEdit";
 import UserDelete from "./components/UserDelete";
+import ChatPage from "./pages/ChatPage";
 
 function App() {
     //socket 연결시 소켓 정보 저장
@@ -45,6 +46,7 @@ function App() {
               <Route path="/" element={<Intro/>}/>
               <Route path="/home" element={<Home/>}/>
               <Route path="/chat" element={<Chat socket={socket}/>}/>
+              <Route path="/chatpage" element={<ChatPage socket={socket}/>}/>
               <Route path="/map" element={<Map/>}/>
               <Route path="/mypage" element={<Mypage/>}/>
               <Route path="/schedule" element={<Schedule/>}/>

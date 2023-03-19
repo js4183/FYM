@@ -1,9 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
 import '../styles/chat.css'
 import axios from "axios";
+// import {Button} from "antd";
+// import {MessageOutlined} from "@ant-design/icons";
 
-const Chat = ({ socket }) => {
-
+const Chat = (socket) => {
     // 로그인한 유저의 닉네임을 저장하는 변수
     const nick = JSON.parse(sessionStorage.getItem("user_info")).user_nick;
 
@@ -106,77 +107,131 @@ const Chat = ({ socket }) => {
     }
 
     //소켓에서 오는 메세지를 받는 함수
-    socket.onmessage = function (event) {
-        let message = JSON.parse(event.data);
-        console.log(message)
-        message.talker !== undefined &&
-        setMsgList(msgList.concat({ cr_idx: message.cr_idx, board_idx: message.board_idx, talker: message.talker, msg: message.msg, sendto: message.sendto }))
-    };
+    // socket.onmessage = function (event) {
+    //     let message = JSON.parse(event.data);
+    //     console.log(message)
+    //     message.talker !== undefined &&
+    //     setMsgList(msgList.concat({ cr_idx: message.cr_idx, board_idx: message.board_idx, talker: message.talker, msg: message.msg, sendto: message.sendto }))
+    // };
 
     // 스크롤 고정
-    const scrollRef = useRef();
-    useEffect(() => {
-        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    });
+    // const scrollRef = useRef();
+    // useEffect(() => {
+    //     if (scrollRef.current) {
+    //         scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    //     }
+    // });
 
     // 엔터쳤을 때 전송
     const enterKey = (e) => {
         e.keyCode == 13 && sendBtn()
     }
 
-
-
     return (
         <div>
+
             <div className="chat-container">
                 <aside>
                     <header>
-                        {/*<span>어쩌다 짝꿍</span>*/}
-                        {/*  <input type="text" placeholder="닉네임 검색" className="nickSearchInput"/>*/}
+                        <input type="text" placeholder="닉네임 검색" className="nickSearchInput"/>
                     </header>
                     <ul>
-                        {roomInfo && roomInfo.map((item, index) => (
-                            <li key={index} onClick={() => curCtRCk(item)}>
-                                <div>
-                                    <h2>{item.user_nick2 === nick? item.user_nick1 : item.user_nick2}</h2>
-                                    {/*<h3>메시지 출력</h3>*/}
-                                </div>
-                            </li>
-                        ))}
+                        <li>
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt=""/>
+                            <div>
+                                <h2>Prénom Nom</h2>
+                                <h3>
+                                    <span className="status orange"></span>
+                                    offline
+                                </h3>
+                            </div>
+                        </li>
                     </ul>
                 </aside>
-
                 <main>
-                    <div className='noChat' style={{display: display, alignItems:"center", justifyContent:"center", color:"white", height: "inherit"}}></div>
-                    <div className='mainContainer' style={{ display: dpChat }}>
-                        <header>
-                            <div>
-                                <h2>{curCtR.user_nick2 == nick ? curCtR.user_nick1 : curCtR.user_nick2} 님과의 채팅입니다.</h2>
-                                <h3>[{boardInfo.board_cate}] {boardInfo.board_title}</h3>
+                    <header>
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt=""/>
+                        <div>
+                            <h2>Chat with Vincent Porter</h2>
+                            <h3>already 1902 messages</h3>
+                        </div>
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_star.png" alt=""/>
+                    </header>
+                    <ul id="chat">
+                        <li className="you">
+                            <div className="entete">
+                                <span className="status green"></span>
+                                <h2>Vincent</h2>
+                                <h3>10:12AM, Today</h3>
                             </div>
-                            <button onClick={chatExit}>나가기</button>
-                        </header>
-                        <ul id="chat" ref={scrollRef}>
-                            {msgList && msgList.map((item, index) => (
-                                <li key={index} className={item.talker == nick ? 'me' : 'you'}>
-                                    <div className="entete">
-                                        <h2>{item.talker}</h2>
-                                    </div>
-                                    <div className="triangle"></div>
-                                    <div className="message">
-                                        {item.msg}
-                                    </div>
-                                    {/*<h3>시간</h3>*/}
-                                </li>
-                            ))}
-                        </ul>
-                        <footer>
-                            <textarea id="msg" onChange={sendText} value={ctMsg} onKeyUp={enterKey} placeholder="메시지를 입력하세요."></textarea>
-                            <button onClick={sendBtn}>SEND</button>
-                        </footer>
-                    </div>
+                            <div className="triangle"></div>
+                            <div className="message">
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                            </div>
+                        </li>
+                        <li className="me">
+                            <div className="entete">
+                                <h3>10:12AM, Today</h3>
+                                <h2>Vincent</h2>
+                                <span className="status blue"></span>
+                            </div>
+                            <div className="triangle"></div>
+                            <div className="message">
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                            </div>
+                        </li>
+                        <li className="me">
+                            <div className="entete">
+                                <h3>10:12AM, Today</h3>
+                                <h2>Vincent</h2>
+                                <span className="status blue"></span>
+                            </div>
+                            <div className="triangle"></div>
+                            <div className="message">
+                                OK
+                            </div>
+                        </li>
+                        <li className="you">
+                            <div className="entete">
+                                <span className="status green"></span>
+                                <h2>Vincent</h2>
+                                <h3>10:12AM, Today</h3>
+                            </div>
+                            <div className="triangle"></div>
+                            <div className="message">
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                            </div>
+                        </li>
+                        <li className="me">
+                            <div className="entete">
+                                <h3>10:12AM, Today</h3>
+                                <h2>Vincent</h2>
+                                <span className="status blue"></span>
+                            </div>
+                            <div className="triangle"></div>
+                            <div className="message">
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                            </div>
+                        </li>
+                        <li className="me">
+                            <div className="entete">
+                                <h3>10:12AM, Today</h3>
+                                <h2>Vincent</h2>
+                                <span className="status blue"></span>
+                            </div>
+                            <div className="triangle"></div>
+                            <div className="message">
+                                OK
+                            </div>
+                        </li>
+                    </ul>
+                    <footer>
+                        <textarea placeholder="Type your message"></textarea>
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt=""/>
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt=""/>
+                        <a href="#">Send</a>
+                    </footer>
                 </main>
-
             </div>
 
         </div>

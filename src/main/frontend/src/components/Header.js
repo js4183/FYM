@@ -195,6 +195,9 @@ const Header = () => {
             <StyledNavLink to="/schedule">
               <Text>일정</Text>
             </StyledNavLink>
+            <StyledNavLink to="/chatpage">
+              <Text>채팅구현중</Text>
+            </StyledNavLink>
           </Nav>
         <UserInfo>
             <UserInfoMyPageBtn to={`/mypage`}>
