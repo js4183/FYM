@@ -13,6 +13,9 @@ import Login from "./components/Login";
 import MyEdit from "./components/MyEdit";
 import UserDelete from "./components/UserDelete";
 import ChatPage from "./pages/ChatPage";
+import GathCard from "./components/GathCard";
+import GathDetail from "./components/GathDetail";
+import MeetCreate from "./components/MeetCreate";
 
 function App() {
     //socket 연결시 소켓 정보 저장
@@ -54,6 +57,9 @@ function App() {
               <Route path="/login" element={<Login connect={connect} socket={socket}/>}/>
               <Route path="/myedit" element={<MyEdit/>}/>
               <Route path="/userdelete" element={<UserDelete/>}/>
+              <Route path="/card" element={<GathCard/>}/>
+              <Route path="/create" element={<MeetCreate/>}/>
+              <Route path="/detail" element={<GathDetail/>}/>
           </Routes>
           <Footer/>
       </div>

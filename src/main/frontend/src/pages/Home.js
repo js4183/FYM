@@ -3,6 +3,7 @@ import styled from "styled-components";
 import media from "styled-media-query";
 import OnMapBtn from "../components/OnMapBtn";
 import HomeSearchBar from "../components/HomeSearchBar";
+import MeetList from "../components/MeetList";
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -151,6 +152,7 @@ const Home = () => {
                     <OnMapBtn id="onMapBtn" />
                 </ListHeader>
                     <Gatherings>
+                        <MeetList/>
                     </Gatherings>
                     <EmptyContainer>모임이 없어요</EmptyContainer>
             </ListContainer>

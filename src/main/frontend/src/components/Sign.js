@@ -146,7 +146,7 @@ const Sign = () => {
     };
 
     const checkNick = () => {
-        axios.get(`/user/checknick/${nick}`)
+        axios.get(`/user/checknick/${encodeURIComponent(nick)}`)
             .then((res)=>{
                 if(res.data===true){
                     alert("이미 사용중인 닉네임입니다.");
