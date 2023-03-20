@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import media from "styled-media-query";
+import {useNavigate} from "react-router-dom";
 import OnMapBtn from "../components/OnMapBtn";
 import HomeSearchBar from "../components/HomeSearchBar";
 import MeetList from "../components/MeetList";
@@ -132,12 +133,19 @@ const EmptyContainer = styled.div`
 `;
 
 const Home = () => {
+    const navigate = useNavigate();
+
+    const register = () => {
+        navigate("/create")
+    }
+
     return (
         <HomeContainer>
             <SearchContainer>
                 <SearchTitle>어떤 운동 모임을 찾으시나요?</SearchTitle>
                 <HomeSearchBar/>
                 <SearchTitle>모임, 직접 만들어 보실래요?</SearchTitle>
+                <button onClick={register}>모임 만들기</button>
                 {/*<Btn className="create-gathering" onClick={handleCreateGath}>*/}
                 {/*    모임 만들기*/}
                 {/*</Btn>*/}

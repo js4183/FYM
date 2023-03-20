@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import styled from 'styled-components';
+import {useNavigate} from "react-router-dom";
 
 const CardContainer = styled.div`
   border-radius: 1rem;
@@ -82,6 +83,8 @@ const InfoFooter = styled.div`
 `;
 
 const MeetList = () => {
+    const maker = JSON.parse(sessionStorage.getItem("user_info")).user_nick;
+
     const [list, setList] = useState([]);
 
     useEffect(()=>{
@@ -91,10 +94,11 @@ const MeetList = () => {
     },[]);
     return (
             <>
-                {list.map(({ mt_idx, mt_maker, mt_title, mt_desc, mt_type, mt_date, mt_time, mt_place, mt_cnt, mt_member }) => {
+                {list.filter(item=>item.mt_maker !==maker).map(({ mt_idx, mt_maker, mt_title, mt_desc, mt_type, mt_date, mt_time, mt_place, mt_cnt, mt_member }) => {
                     return (
                         <RecommItem
                             key={mt_idx}
+                            mt_idx={mt_idx}
                             maker={mt_maker}
                             title={mt_title}
                             desc={mt_desc}
@@ -111,10 +115,12 @@ const MeetList = () => {
     );
 };
 
-const RecommItem = ({ key, maker, title, desc, type, date, time, place, cnt, member }) => {
+const RecommItem = ({ mt_idx, maker, title, desc, type, date, time, place, cnt, member }) => {
+    const navigate = useNavigate();
     const toDetail = () =>{
-        console.log(key);
+        navigate(`/detail/${mt_idx}`);
     }
+
     return (
     <CardContainer onClick={toDetail}>
         <InfoHeader>

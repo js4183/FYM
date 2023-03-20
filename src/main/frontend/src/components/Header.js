@@ -198,14 +198,8 @@ const Header = () => {
             <StyledNavLink to="/chatpage">
               <Text>채팅구현중</Text>
             </StyledNavLink>
-            <StyledNavLink to="/card">
-              <Text>모임 카드</Text>
-            </StyledNavLink>
-            <StyledNavLink to="/create">
-              <Text>모임 작성</Text>
-            </StyledNavLink>
-            <StyledNavLink to="/detail">
-              <Text>모임 상세</Text>
+            <StyledNavLink to="/board">
+              <Text>게시판</Text>
             </StyledNavLink>
           </Nav>
         <UserInfo>

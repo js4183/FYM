@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import media from "styled-media-query";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const DetailContainer = styled.div`
   width: calc(100vw - 6rem);
@@ -153,22 +155,6 @@ const InfoBody = styled.div`
   }
 `;
 
-// const BodyText = styled.h4`
-//   margin-bottom: 0.5rem;
-//   font-size: 0.875rem;
-//   font-family: Interop-Regular;
-//   color: var(--color-darkgray);
-// `;
-
-const MapBox = styled.div`
-  border-radius: 1rem;
-  width: 100%;
-  height: 15rem;
-  > * {
-    filter: drop-shadow(1px 1px 3px var(--color-shadow)) !important;
-  }
-`;
-
 const UserBox = styled.div`
   border-radius: 1rem;
   margin: 0.25rem 0;
@@ -187,11 +173,48 @@ const DetailFooter = styled(DetailHeader)`
 `;
 
 const GathDetail = () => {
+    const { mt_idx } = useParams();
+
+    const [data, setData] = useState(null);
+    const [mtidx, setMtidx] = useState(null);
+
+    useEffect(() => {
+        setMtidx(mt_idx);
+        const fetchData = async () => {
+            const result = await axios.get(`/meet/detail/${mt_idx}`);
+            setData(result.data);
+        };
+
+        fetchData();
+    }, [mt_idx]);
+
+    if (!data) {
+        return <div>Loading...</div>;
+    }
+
+    const user_nick = JSON.parse(sessionStorage.getItem("user_info")).user_nick;
+
+    const attendMeet = () =>{
+        axios.post("/meet/attend",{
+            mt_idx: mtidx,
+            user_id: user_nick,
+        },{
+            params: {
+                mt_idx: mtidx,
+                user_id: user_nick,
+            }
+        }).then((res)=>{
+            alert("참가완료");
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }
+
     return (
         <DetailContainer>
             <DetailHeader>
-                <GathTitle>제목</GathTitle>
-                <GathDescription>설명</GathDescription>
+                <GathTitle>{data[0].mt_title}</GathTitle>
+                <GathDescription>{data[0].mt_desc}</GathDescription>
             </DetailHeader>
             <DetailBody>
                 <BodyColumn>
@@ -199,57 +222,55 @@ const GathDetail = () => {
                         <InfoTitle>어떤 모임인가요?</InfoTitle>
                         <InfoBody>
                             <div id="sport">
-                                <div className="icon">아이콘</div>
-                                <div className="text">모임 종류</div>
+                                <div className="icon">종류</div>
+                                <div className="text">{data[0].mt_type}</div>
                             </div>
                         </InfoBody>
                     </InfoContainer>
                     <InfoContainer>
                         <InfoTitle>언제 하나요?</InfoTitle>
-                        {/* <BodyText>날짜</BodyText> */}
                         <InfoBody>
                             <div id="date">
                                 <div className="icon">🗓</div>
-                                <div className="text">년 월 일</div>
+                                <div className="text">{data[0].mt_date}</div>
                             </div>
                         </InfoBody>
-                        {/* <BodyText>시간</BodyText> */}
                         <InfoBody>
                             <div id="time">
                                 <div className="icon">⏰</div>
                                 <div className="text">시간</div>
                                 <div className="divider">|</div>
-                                    <div className="text">시간 텍스트</div>
+                                    <div className="text">{data[0].mt_time}</div>
                             </div>
                         </InfoBody>
                     </InfoContainer>
                     <InfoContainer>
                         <InfoTitle>어디서 하나요?</InfoTitle>
                         <div id="place">
-                            <div>장소</div>
+                            <div>{data[0].mt_place}</div>
                         </div>
-                        <MapBox>
-                            지도 박스
-                        </MapBox>
                     </InfoContainer>
                 </BodyColumn>
                 <BodyColumn id="user-column">
                     <InfoContainer>
                         <InfoTitle>함께 하는 사람들</InfoTitle>
                         <div id="users">
-                            몇 명 모집중
+                            {data && data[0].mt_cnt < data[0].mt_member ? (
+                                <div>현재 {data[0].mt_cnt}명</div>
+                            ) : (
                                 <div>모집 완료</div>
+                            )}
                             <div className="divider">|</div>
-                            <div>총 인원수</div>
+                            <div>총 {data[0].mt_member}명</div>
                         </div>
                             <UserBox>
-                                유저 프로필
+                                {data[0].mt_maker}
                             </UserBox>
                     </InfoContainer>
                 </BodyColumn>
             </DetailBody>
             <DetailFooter>
-                            <button className="join">
+                            <button className="join" onClick={attendMeet}>
                                 모임 참여하기
                             </button>
             </DetailFooter>

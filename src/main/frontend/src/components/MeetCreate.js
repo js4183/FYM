@@ -283,10 +283,10 @@ const MeetCreate = () => {
                     <InfoContainer>
                         <InfoTitle>함께 할 사람들</InfoTitle>
                         <div id="users">
-                            <div><input type="text" placeholder="인원을 정해주세요." onChange={handleInput} name="member"/></div>
+                            <div><input type="text" placeholder="인원을 정해주세요." onChange={handleInput} name="member"/>명</div>
                         </div>
                         <UserBox>
-                            유저 프로필
+                            {maker}
                         </UserBox>
                     </InfoContainer>
                 </BodyColumn>

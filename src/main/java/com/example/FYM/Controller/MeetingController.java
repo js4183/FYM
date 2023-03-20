@@ -22,4 +22,14 @@ public class MeetingController {
     public List<Meeting> MeetList(){
         return meetingService.MeetList();
     }
+
+    @GetMapping("/detail/{mt_idx}")
+    public List<Meeting> MeetDetail(@PathVariable("mt_idx") Integer mt_idx){
+        return meetingService.MeetDetail(mt_idx);
+    }
+
+    @PostMapping("/attend")
+    public int attend(@RequestBody Meeting attend){
+        return meetingService.attend(attend.getMt_idx());
+    }
 }
