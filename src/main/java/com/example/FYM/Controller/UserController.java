@@ -12,7 +12,7 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/sign")
-    public int sign(@RequestBody User sign) {
+    public int sign(@RequestBody User sign){
         return userService.sign(sign);
     }
 

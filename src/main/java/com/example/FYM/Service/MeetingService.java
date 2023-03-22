@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MeetingService {
@@ -38,16 +39,10 @@ public class MeetingService {
         return meetingMapper.MeetDetail(mt_idx);
     }
 
-    public int attend(Integer attend){
-        int res = meetingMapper.attend(attend);
+    public int attend(Map<String, Object> map){
+        int res = meetingMapper.attend(map);
         if(res==1){
-            ArrayList<Meeting> latestMeetings = (ArrayList<Meeting>) meetingMapper.reg(attend);
-            Meeting latestMeeting = latestMeetings.get(0);
-            // 모임 멤버 추가
-            MeetMember meetingMember = new MeetMember();
-            meetingMember.setMt_idx(latestMeeting.getMt_idx());
-            meetingMember.setUser_id(latestMeeting.getMt_maker());
-            res = meetingMapper.addMember(meetingMember);
+            res = meetingMapper.attendMember(map);
         }
         return res;
     }

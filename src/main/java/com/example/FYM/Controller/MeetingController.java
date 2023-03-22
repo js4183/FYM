@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/meet")
 @RestController
@@ -29,7 +30,7 @@ public class MeetingController {
     }
 
     @PostMapping("/attend")
-    public int attend(@RequestBody Meeting attend){
-        return meetingService.attend(attend.getMt_idx());
+    public int attend(@RequestBody Map<String, Object> map){
+        return meetingService.attend(map);
     }
 }

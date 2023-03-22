@@ -13,7 +13,7 @@ import Login from "./components/Login";
 import MyEdit from "./components/MyEdit";
 import UserDelete from "./components/UserDelete";
 import ChatPage from "./pages/ChatPage";
-import GathDetail from "./components/GathDetail";
+import MeetDetail from "./components/MeetDetail";
 import MeetCreate from "./components/MeetCreate";
 import Board from "./pages/Board";
 
@@ -58,7 +58,7 @@ function App() {
               <Route path="/myedit" element={<MyEdit/>}/>
               <Route path="/userdelete" element={<UserDelete/>}/>
               <Route path="/create" element={<MeetCreate/>}/>
-              <Route path="/detail/:mt_idx" element={<GathDetail/>}/>
+              <Route path="/detail/:mt_idx" element={<MeetDetail/>}/>
               <Route path="/board" element={<Board/>}/>
           </Routes>
           <Footer/>

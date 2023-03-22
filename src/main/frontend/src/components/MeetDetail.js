@@ -172,7 +172,7 @@ const DetailFooter = styled(DetailHeader)`
   }
 `;
 
-const GathDetail = () => {
+const MeetDetail = () => {
     const { mt_idx } = useParams();
 
     const [data, setData] = useState(null);
@@ -278,4 +278,4 @@ const GathDetail = () => {
     );
 }
 
-export default GathDetail;
+export default MeetDetail;
