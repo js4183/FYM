@@ -59,9 +59,9 @@ const DetailContainer = styled.div`
     flex: 0 0 1;
     margin-right: 0.4em;
   }
-  .text {
-    flex: 1 1 1;
-  }
+  //.text {
+  //  flex: 1 1 1;
+  //}
   .divider {
     line-height: 1em;
     margin: 0 0.6em;
@@ -270,9 +270,9 @@ const MeetDetail = () => {
                 </BodyColumn>
             </DetailBody>
             <DetailFooter>
-                            <button className="join" onClick={attendMeet}>
-                                모임 참여하기
-                            </button>
+                {data && data[0].mt_cnt < data[0].mt_member ? (<button className="join" onClick={attendMeet}>
+                    모임 참여하기
+                </button>):(<button className="join" disabled>모임 참여불가</button>)}
             </DetailFooter>
         </DetailContainer>
     );

@@ -6,19 +6,17 @@ import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
-import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
 @Configuration
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(new EchoHandler(), "/socket")
-                .setAllowedOriginPatterns("*");
+        registry.addHandler(new ChatHandler(), "/socket").setAllowedOriginPatterns("*");
     }
 
     @Bean
-    public WebSocketHandler EchoHandler() {
-        return new EchoHandler();
+    public WebSocketHandler ChatHandler() {
+        return new ChatHandler();
     }
 }

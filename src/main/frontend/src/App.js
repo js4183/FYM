@@ -12,10 +12,10 @@ import Sign from "./components/Sign";
 import Login from "./components/Login";
 import MyEdit from "./components/MyEdit";
 import UserDelete from "./components/UserDelete";
-import ChatPage from "./pages/ChatPage";
 import MeetDetail from "./components/MeetDetail";
 import MeetCreate from "./components/MeetCreate";
 import Board from "./pages/Board";
+import ChatPage from "./pages/ChatPage";
 
 function App() {
     //socket 연결시 소켓 정보 저장
@@ -48,7 +48,7 @@ function App() {
           <Routes>
               <Route path="/" element={<Intro/>}/>
               <Route path="/home" element={<Home/>}/>
-              <Route path="/chat" element={<Chat socket={socket}/>}/>
+              <Route path="/chat" element={<Chat/>}/>
               <Route path="/chatpage" element={<ChatPage socket={socket}/>}/>
               <Route path="/map" element={<Map/>}/>
               <Route path="/mypage" element={<Mypage/>}/>

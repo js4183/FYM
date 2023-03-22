@@ -1,23 +1,23 @@
 package com.example.FYM.WebSocket;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
-import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class EchoHandler extends TextWebSocketHandler {
+@Component
+public class ChatHandler extends TextWebSocketHandler {
+    private final List<WebSocketSession> sessions = new CopyOnWriteArrayList<>();
+
     // 현재 로그인 중인 유저들의 정보 저장
-    Map<String, WebSocketSession> users = new ConcurrentHashMap<String, WebSocketSession>();
+    Map<String, WebSocketSession> users = new ConcurrentHashMap<>();
 
     Gson gson = new Gson();
 
