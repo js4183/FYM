@@ -37,7 +37,7 @@ const ChatPage = ({ socket }) => {
   }
 
   const getSendTo = () => {
-    if (nick == curCtR.user_nick2) {
+    if (nick === curCtR.user_nick2) {
       return curCtR.user_nick1
     } else {
       return curCtR.user_nick2
@@ -122,7 +122,7 @@ const ChatPage = ({ socket }) => {
 
   // 엔터쳤을 때 전송
   const enterKey = (e) => {
-    e.keyCode == 13 && sendBtn()
+    e.keyCode === 13 && sendBtn()
   }
 
   return (
@@ -130,8 +130,7 @@ const ChatPage = ({ socket }) => {
       <div className="chat-container">
         <aside>
           <header>
-            <span>어쩌다 짝꿍</span>
-            <input type="text" placeholder="닉네임 검색" className="nickSearchInput"/>
+            <span style={{fontSize:"20px", fontWeight:"700"}}>💬채팅</span>
           </header>
           <ul>
               {roomInfo && roomInfo.map((item, index) => (
@@ -146,14 +145,14 @@ const ChatPage = ({ socket }) => {
           <div className='mainContainer' style={{ display: dpChat }}>
           <header>
                 <div>
-                  <h2>{curCtR.user_nick2 == nick ? curCtR.user_nick1 : curCtR.user_nick2} 님과의 채팅입니다.</h2>
+                  <h2>{curCtR.user_nick2 === nick ? curCtR.user_nick1 : curCtR.user_nick2} 님과의 채팅입니다.</h2>
                   <h3>[{boardInfo.board_cate}] {boardInfo.board_title}</h3>
                 </div>
                 <Button onClick={chatExit}>나가기</Button>
           </header>
           <ul id="chat" ref={scrollRef}>
             {msgList && msgList.map((item, index) => (
-                <li key={index} className={item.talker == nick ? 'me' : 'you'}>
+                <li key={index} className={item.talker === nick ? 'me' : 'you'}>
                   <div className="entete">
                     <h2>{item.talker}</h2>
                   </div>

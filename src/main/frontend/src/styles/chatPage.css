@@ -5,7 +5,7 @@
 .chat-container{
     width:750px;
     height:800px;
-    background:#eff3f7;
+    background:#ffffff;
     margin:0 auto;
     font-size:0;
     border-radius:5px;
@@ -15,7 +15,7 @@
 aside{
     width:260px;
     height:800px;
-    background-color:rgb(202, 255, 190);
+    background-color:#F7F6FB;
     display:inline-block;
     font-size:15px;
     vertical-align:top;

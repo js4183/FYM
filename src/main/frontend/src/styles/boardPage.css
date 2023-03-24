@@ -1,0 +1,94 @@
+:where(.css-dev-only-do-not-override-10ed4xt).ant-table-wrapper .ant-table-pagination-right {
+    justify-content: center;
+}
+
+.ant-layout-sider-children {
+    height: fit-content;
+}
+
+:where(.css-dev-only-do-not-override-10ed4xt).ant-menu-light .ant-menu-item-selected {
+    background-color: white;
+}
+
+:where(.css-dev-only-do-not-override-10ed4xt).ant-menu-light .ant-menu-item-selected {
+    color: gray;
+}
+
+:where(.css-dev-only-do-not-override-10ed4xt).ant-menu {
+    padding-top: 20px;
+}
+
+:where(.css-dev-only-do-not-override-10ed4xt).ant-layout .ant-layout-sider {
+    background: none;
+}
+
+main {
+    height: 100%;
+}
+
+:where(.css-dev-only-do-not-override-10ed4xt).ant-menu-inline {
+    width: 100%;
+    height: 800px;
+}
+
+.boardContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ant-input-group-wrapper ant-input-search css-dev-only-do-not-override-10ed4xt {
+    width: 100%;
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.boardWriteContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+    min-height: 500px;
+    width: 60rem;
+}
+
+.serviceContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.serviceContainer span {
+    font-size: 30px;
+}
+
+.boardViewContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.boardView {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    border: lightgray solid 1px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.boardContents {
+    padding-top: 30px;
+    min-height: fit-content;
+}
+
+link, a {
+    text-decoration-line: none;
+}
