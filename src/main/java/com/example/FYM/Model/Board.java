@@ -46,4 +46,6 @@ public class Board {
     // 게시글 신고횟수
     private Integer board_report;
 
+    private Integer board_like;
+
 }

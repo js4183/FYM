@@ -63,7 +63,7 @@ function App() {
               <Route path="/detail/:mt_idx" element={<MeetDetail/>}/>
               <Route path="/board" element={<BoardPage/>}/>
               <Route path="/board/write" element={<WriteBoard/>}/>
-              <Route path="board/free" element={<BoardDetail/>}/>
+              <Route path="/board/free" element={<BoardDetail/>}/>
           </Routes>
           <Footer/>
       </div>

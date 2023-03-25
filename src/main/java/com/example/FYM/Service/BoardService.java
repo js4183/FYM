@@ -22,6 +22,7 @@ public class BoardService {
     }
 
     public List<Board> freeViewDetail(String idx) {
+        boardMapper.hitUp(idx);
         return boardMapper.freeViewDetail(idx);
     }
 
