@@ -41,7 +41,7 @@ public class MeetingService {
 
     public int attend(Map<String, Object> map){
         int res = meetingMapper.attend(map);
-        if(res==1){
+        if(res==1) {
             res = meetingMapper.attendMember(map);
         }
         return res;

@@ -20,6 +20,37 @@ public class ChatController {
     @Autowired
     ChatService chatService;
 
+    @PostMapping("/chatlist")
+    public List<Chatroom> Chatlist(@RequestBody Map<String, String> list){
+        String user_nick = list.get("nick");
+        return chatService.ChatList(user_nick);
+    }
+
+    @PostMapping("/chatsend")
+    public void ChatSend(@RequestBody Map<String, String> data){
+        HashMap<String, String> msg = new HashMap<>();
+        msg.put("cr_idx", data.get("cr_idx"));
+        msg.put("board_idx", data.get("board_idx"));
+        msg.put("talker", data.get("talker"));
+        msg.put("msg", data.get("msg"));
+        chatService.ChatSend(msg);
+    }
+
+    @PostMapping("/chatcontent")
+    public List<ChatContent> Chatting(@RequestBody Map<String, String> data){
+        return chatService.Chatting(data.get("cr_idx"));
+    }
+
+    @PostMapping("/roomexit")
+    public void RoomExit(@RequestBody Map<String, String> data){
+        chatService.RoomExit(data.get("cr_idx"));
+    }
+
+    @PostMapping("/chatinfo")
+    public Map<String, Object> ChatInfo(@RequestBody Map<String, String> data){
+        return chatService.ChatInfo(data.get("board_idx"));
+    }
+
     @PostMapping("/roomlist")
     public List<Chatroom> ChatRoomList(@RequestBody Map<String, String> data){
         String user_nick = data.get("nick");
@@ -33,6 +64,11 @@ public class ChatController {
         map.put("user_nick1", data.get("user_nick1"));
         map.put("user_nick2", data.get("user_nick2"));
         chatService.NewChatRoom(map);
+    }
+
+    @PostMapping("/chatadd")
+    public void ChatAddRoom(@RequestBody Map<String, String> data){
+
     }
 
     @PostMapping("/sendmsg")

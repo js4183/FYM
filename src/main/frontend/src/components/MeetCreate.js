@@ -226,7 +226,7 @@ const MeetCreate = () => {
             mt_member: member,
         }).then((res) => {
             alert("등록되었습니다.")
-            // navigate("/meet/detail");
+            navigate("/");
         })
             .catch((err) => {
                 console.log(err);

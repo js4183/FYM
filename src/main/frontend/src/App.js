@@ -50,7 +50,7 @@ function App() {
           <Routes>
               <Route path="/" element={<Intro/>}/>
               <Route path="/home" element={<Home/>}/>
-              <Route path="/chat" element={<Chat/>}/>
+              <Route path="/chat" element={<Chat socket={socket}/>}/>
               <Route path="/chatpage" element={<ChatPage socket={socket}/>}/>
               <Route path="/map" element={<Map/>}/>
               <Route path="/mypage" element={<Mypage/>}/>

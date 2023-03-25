@@ -15,6 +15,26 @@ public class ChatService {
     @Autowired
     ChatMapper chatMapper;
 
+    public List<Chatroom> ChatList(String user_nick){
+        return chatMapper.ChatList(user_nick);
+    }
+
+    public void ChatSend(HashMap<String, String> msg){
+        chatMapper.ChatSend(msg);
+    }
+
+    public List<ChatContent> Chatting(String cr_idx){
+        return chatMapper.Chatting(cr_idx);
+    }
+
+    public void RoomExit(String cr_idx){
+        chatMapper.RoomExit(cr_idx);
+    }
+
+    public Map<String, Object> ChatInfo(String board_idx){
+        return chatMapper.ChatInfo(board_idx);
+    }
+
     public List<Chatroom> ChatRoomList(String user_nick) {
         return chatMapper.ChatRoomList(user_nick);
     }
