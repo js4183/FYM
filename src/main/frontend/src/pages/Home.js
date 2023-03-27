@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import OnMapBtn from "../components/OnMapBtn";
 import HomeSearchBar from "../components/HomeSearchBar";
 import MeetList from "../components/MeetList";
+import SearchBar from "../components/SearchBar";
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -144,6 +145,7 @@ const Home = () => {
             <SearchContainer>
                 <SearchTitle>어떤 운동 모임을 찾으시나요?</SearchTitle>
                 <HomeSearchBar/>
+                <SearchBar/>
                 <SearchTitle>모임, 직접 만들어 보실래요?</SearchTitle>
                 <button onClick={register}>모임 만들기</button>
                 {/*<Btn className="create-gathering" onClick={handleCreateGath}>*/}

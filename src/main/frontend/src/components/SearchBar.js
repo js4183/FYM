@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 import styled from "styled-components";
 import media from "styled-media-query";
-import SearchInput from "./SearchInput";
-import InputDatepicker from "./InputDatepicker";
 import InputDatalist from "./InputDatalist";
+import InputDatepicker from "./InputDatepicker";
 import InputTotalNum from "./InputTotalNum";
+import SearchBarInput from "./SearchBarInput";
 
 const InputContainer = styled.form`
   margin-bottom: 2rem;
@@ -20,23 +20,6 @@ const InputContainer = styled.form`
     width: 100%;
     min-width: 20rem;
   `}
-  .gath-search-btn {
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-maingreen--75);
-    color: var(--color-white);
-  }
-  .gath-search-btn.pc {
-    padding: 0;
-    border-radius: 0.6rem;
-  }
-  .gath-search-btn.mobile {
-    width: 100%;
-    ${media.lessThan("small")`
-      min-width: 20rem;
-      height: 3.2rem;
-    `}
-  }
 `;
 
 const InputList = styled.div`
@@ -45,44 +28,43 @@ const InputList = styled.div`
   align-items: center;
   display: flex;
 `;
-
-const HomeSearchBar = () => {
+const SearchBar = () => {
     return (
         <InputContainer>
-            <InputList className="pc">
-                <SearchInput isSport name="운동">
+            <InputList>
+                <SearchBarInput isSport name="모임">
                     <InputDatalist
                         id="sport"
-                        placeholder="어떤 운동하세요?"
+                        placeholder="어떤 모임인가요?"
                     />
-                </SearchInput>
-                <SearchInput name="지역">
+                </SearchBarInput>
+                <SearchBarInput name="지역">
                     <InputDatalist
                         id="area"
                         placeholder="지역 입력"
                     />
-                </SearchInput>
-                <SearchInput isDate name="날짜">
+                </SearchBarInput>
+                <SearchBarInput isDate name="날짜">
                     <InputDatepicker
                         id="date"
                         placeholder="날짜 입력"
                     />
-                </SearchInput>
-                <SearchInput isTime name="시간">
+                </SearchBarInput>
+                <SearchBarInput isTime name="시간">
                     <InputDatalist
                         id="time"
                         placeholder="시간 입력"
                     />
-                </SearchInput>
-                <SearchInput name="인원" hideDivider>
+                </SearchBarInput>
+                <SearchBarInput name="인원" hideDivider>
                     <InputTotalNum
                         inputId="totalNum"
                         placeholder="인원 입력"
                     />
-                </SearchInput>
+                </SearchBarInput>
             </InputList>
         </InputContainer>
     );
 };
 
-export default HomeSearchBar;
+export default SearchBar;

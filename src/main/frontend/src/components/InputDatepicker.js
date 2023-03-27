@@ -3,7 +3,7 @@ import React from 'react';
 const InputDatepicker = () => {
     return (
         <div>
-            InputDatepicker
+            날짜
         </div>
     );
 };

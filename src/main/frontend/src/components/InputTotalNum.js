@@ -3,7 +3,7 @@ import React from 'react';
 const InputTotalNum = () => {
     return (
         <div>
-            InputTotalNum
+            인원수
         </div>
     );
 };
