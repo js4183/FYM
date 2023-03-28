@@ -2,6 +2,7 @@ package com.example.FYM.Service;
 
 import com.example.FYM.Mapper.BoardMapper;
 import com.example.FYM.Model.Board;
+import com.example.FYM.Model.tb_board;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +43,9 @@ public class BoardService {
                 return "fail";
             }
         }
+    }
 
+    public List<tb_board> boardList(){
+        return boardMapper.boardList();
     }
 }

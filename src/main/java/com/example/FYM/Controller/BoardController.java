@@ -1,12 +1,10 @@
 package com.example.FYM.Controller;
 
 import com.example.FYM.Model.Board;
+import com.example.FYM.Model.tb_board;
 import com.example.FYM.Service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -61,5 +59,10 @@ public class BoardController {
         TC.put("content", data.get("content"));
 
         return boardService.boardWritePro(TC);
+    }
+
+    @GetMapping("/list")
+    public List<tb_board> boardList(){
+        return boardService.boardList();
     }
 }

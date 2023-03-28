@@ -28,7 +28,7 @@ const BoardDetail = () => {
     let loginNick = JSON.parse(sessionStorage.getItem("user_info")).user_nick
 
     const viewList = () => {
-        navigate('/Board')
+        navigate('/BoardWrite')
     }
 
     useEffect(() => {

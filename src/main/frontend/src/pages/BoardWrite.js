@@ -18,7 +18,7 @@ const BoardLayout = styled.div`
     min-height: 300px;
   }
 `;
-const Board = () => {
+const BoardWrite = () => {
     // 게시글의 제목과 내용을 저장하는 변수
     const [post, setPost] = useState({
         title : '',
@@ -52,4 +52,4 @@ const Board = () => {
     );
 };
 
-export default Board;
+export default BoardWrite;

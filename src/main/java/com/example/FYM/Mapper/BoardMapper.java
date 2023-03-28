@@ -1,6 +1,7 @@
 package com.example.FYM.Mapper;
 
 import com.example.FYM.Model.Board;
+import com.example.FYM.Model.tb_board;
 import org.apache.ibatis.annotations.*;
 
 import java.util.HashMap;
@@ -25,4 +26,7 @@ public interface BoardMapper {
 
     @Insert("insert into tb_board(board_idx, board_title, board_content) values(null, #{title}, #{content})")
     public int boardWritePro(HashMap<String, String> TC);
+
+    @Select("select * from tb_board")
+    public List<tb_board> boardList();
 }

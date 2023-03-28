@@ -6,7 +6,7 @@ const Free = ({viewList}) => {
     const navigate = useNavigate();
 
     const freeDetail = (e) => {
-        // navigate('/Board/Free');
+        // navigate('/BoardWrite/Free');
         console.log(e.target);
     }
 

@@ -44,7 +44,7 @@ const BoardEdit = () => {
                 console.log('보내는 값',res.config.data)
                 console.log('받아오는 값',res.data)
             }).catch((error)=>(console.log(error)))
-        navigate('/Board', { state: { ckMenu: '1' }});
+        navigate('/BoardWrite', { state: { ckMenu: '1' }});
     }
 
     return (
