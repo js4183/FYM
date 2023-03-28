@@ -29,4 +29,7 @@ public interface BoardMapper {
 
     @Select("select * from tb_board")
     public List<tb_board> boardList();
+
+    @Select("select * from tb_board where board_idx=#{b_idx}")
+    public List<tb_board> boardDetail(Integer b_idx);
 }

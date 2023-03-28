@@ -1,6 +1,7 @@
 package com.example.FYM.Controller;
 
 import com.example.FYM.Model.Board;
+import com.example.FYM.Model.Meeting;
 import com.example.FYM.Model.tb_board;
 import com.example.FYM.Service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,5 +65,10 @@ public class BoardController {
     @GetMapping("/list")
     public List<tb_board> boardList(){
         return boardService.boardList();
+    }
+
+    @GetMapping("/view/{b_idx}")
+    public List<tb_board> boardDetail(@PathVariable("b_idx") Integer b_idx){
+        return boardService.boardDetail(b_idx);
     }
 }

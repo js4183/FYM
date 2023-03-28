@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const BoardListLayout = styled.div`
   width: 500px;
@@ -9,6 +10,8 @@ const BoardListLayout = styled.div`
 `;
 
 const BoardList = () => {
+    const navigate = useNavigate();
+
     const [list, setList] = useState([]);
 
     useEffect(()=>{
@@ -19,6 +22,11 @@ const BoardList = () => {
             console.log(err);
         })
     },[])
+
+    const handleViewClick = (id) => {
+        navigate(`/board/view/${id}`);
+    };
+
     return (
         <BoardListLayout>
             <table>
@@ -31,7 +39,7 @@ const BoardList = () => {
                 </thead>
                 <tbody>
                 {list.map((item) => (
-                    <tr key={item.board_idx}>
+                    <tr key={item.board_idx} onClick={() => handleViewClick(item.board_idx)}>
                         <td>{item.board_idx}</td>
                         <td>{item.board_title}</td>
                         <td>{item.board_content}</td>

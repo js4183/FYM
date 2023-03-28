@@ -48,4 +48,8 @@ public class BoardService {
     public List<tb_board> boardList(){
         return boardMapper.boardList();
     }
+
+    public List<tb_board> boardDetail(Integer b_idx){
+        return boardMapper.boardDetail(b_idx);
+    }
 }

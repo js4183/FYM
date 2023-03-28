@@ -21,6 +21,7 @@ import BoardDetail from "./components/BoardDetail";
 import BoardWrite from "./pages/BoardWrite";
 import BoardEdit from "./components/BoardEdit";
 import BoardList from "./pages/BoardList";
+import BoardView from "./pages/BoardView";
 
 function App() {
     //socket 연결시 소켓 정보 저장
@@ -67,6 +68,7 @@ function App() {
               <Route path="/boardpage" element={<BoardPage/>}/>
               <Route path="/board" element={<BoardWrite/>}/>
               <Route path="/board/list" element={<BoardList/>}/>
+              <Route path="/board/view/:id" element={<BoardView/>}/>
               <Route path="/board/edit" element={<BoardEdit/>}/>
               <Route path="/board/write" element={<WriteBoard/>}/>
               <Route path="/board/free" element={<BoardDetail/>}/>
