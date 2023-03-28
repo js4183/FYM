@@ -18,6 +18,8 @@ import BoardPage from "./pages/BoardPage";
 import ChatPage from "./pages/ChatPage";
 import WriteBoard from "./components/Writeboard";
 import BoardDetail from "./components/BoardDetail";
+import Board from "./pages/Board";
+import BoardEdit from "./components/BoardEdit";
 
 function App() {
     //socket 연결시 소켓 정보 저장
@@ -61,7 +63,9 @@ function App() {
               <Route path="/userdelete" element={<UserDelete/>}/>
               <Route path="/create" element={<MeetCreate/>}/>
               <Route path="/detail/:mt_idx" element={<MeetDetail/>}/>
-              <Route path="/board" element={<BoardPage/>}/>
+              <Route path="/boardpage" element={<BoardPage/>}/>
+              <Route path="/board" element={<Board/>}/>
+              <Route path="/board/edit" element={<BoardEdit/>}/>
               <Route path="/board/write" element={<WriteBoard/>}/>
               <Route path="/board/free" element={<BoardDetail/>}/>
           </Routes>

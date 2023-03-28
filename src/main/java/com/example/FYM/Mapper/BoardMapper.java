@@ -15,11 +15,14 @@ public interface BoardMapper {
     public List<Board> boardView();
 
     @Update("update board set board_cnt = board_cnt + 1 where board_idx=#{idx}")
-    public void hitUp(String idx);
+    public void hitUp(String eidx);
 
     @Select("select * from board where board_idx=#{idx}")
     public List<Board> freeViewDetail(String idx);
 
     @Delete("delete from board where board_idx=#{board_idx}")
     public void freeBoardDelete(String board_idx);
+
+    @Insert("insert into tb_board(board_idx, board_title, board_content) values(null, #{title}, #{content})")
+    public int boardWritePro(HashMap<String, String> TC);
 }

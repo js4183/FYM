@@ -29,4 +29,19 @@ public class BoardService {
     public void freeBoardDelete(String board_idx) {
         boardMapper.freeBoardDelete(board_idx);
     }
+
+    public String boardWritePro(HashMap<String, String> TC){
+        if (TC == null) { // null 값이 넘어온 경우
+            //return "fail";
+            throw new NullPointerException("TC object is null");
+        }else{
+            int res = boardMapper.boardWritePro(TC);
+            if(res==1){
+                return "success";
+            }else{
+                return "fail";
+            }
+        }
+
+    }
 }

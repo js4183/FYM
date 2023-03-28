@@ -44,4 +44,22 @@ public class BoardController {
         String board_idx = data.get("board_idx");
         boardService.freeBoardDelete(board_idx);
     }
+
+    @PostMapping("/writedo")
+    public String boardWritePro(@RequestBody Map<String, String> data){
+        //String title = data.get("title");
+        //String content = data.get("content");
+        //System.out.println("제목"+data.get("title"));
+        //System.out.println("내용"+data.get("content"));
+
+//        if (title == null || content == null) { // null 값이 넘어온 경우
+//            return "fail";
+//        }
+
+        HashMap<String, String> TC = new HashMap<>();
+        TC.put("title", data.get("title"));
+        TC.put("content", data.get("content"));
+
+        return boardService.boardWritePro(TC);
+    }
 }

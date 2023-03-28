@@ -100,7 +100,7 @@ const BoardDetail = () => {
     }
 
     const editMyBoard = () => {
-
+        navigate("/board/edit");
     }
 
     const items = [
