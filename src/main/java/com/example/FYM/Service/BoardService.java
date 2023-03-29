@@ -61,4 +61,8 @@ public class BoardService {
             return "fail";
         }
     }
+
+    public List<tb_board> postsDetail(Integer b_idx){
+        return boardMapper.postsDetail(b_idx);
+    }
 }

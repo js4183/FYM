@@ -35,4 +35,7 @@ public interface BoardMapper {
 
     @Delete("delete from tb_board where board_idx=#{b_idx}")
     public int boardDelete(Integer b_idx);
+
+    @Select("select * from tb_board where board_idx=#{b_idx}")
+    public List<tb_board> postsDetail(Integer b_idx);
 }

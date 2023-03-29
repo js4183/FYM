@@ -81,4 +81,9 @@ public class BoardController {
 
         return boardService.boardDelete(b_idx);
     }
+
+    @GetMapping("/posts/{b_idx}")
+    public List<tb_board> postsDetail(@PathVariable("b_idx") Integer b_idx){
+        return boardService.postsDetail(b_idx);
+    }
 }

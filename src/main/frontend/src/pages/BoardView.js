@@ -24,8 +24,8 @@ const BoardView = () => {
         return <div>Loading...</div>;
     }
 
-    const toEdit = () => {
-
+    const toEdit = (id) => {
+        navigate(`/board/edit/${id}`);
     }
     const toDelete = () => {
         axios.post("/board/delete",{
@@ -50,7 +50,7 @@ const BoardView = () => {
             <h3>{data[0].board_idx}번째 게시글입니다.</h3>
             <h1>{data[0].board_title}</h1>
             <p>{data[0].board_content}</p>
-            <button onClick={toEdit}>수정</button>
+            <button onClick={()=>toEdit(data[0].board_idx)}>수정</button>
             <button onClick={toDelete}>삭제</button>
         </div>
     );
