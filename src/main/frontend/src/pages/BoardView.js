@@ -4,20 +4,21 @@ import {useNavigate, useParams} from "react-router-dom";
 
 
 const BoardView = () => {
-    const { b_idx } = useParams();
+    const { id } = useParams();
 
     const [data, setData] = useState(null);
     const [bidx, setBidx] = useState(null);
 
     useEffect(() => {
-        setBidx(b_idx);
+        setBidx(id);
         const fetchData = async () => {
-            const result = await axios.get(`/board/view/${b_idx}`);
+            const result = await axios.get(`/board/view/${id}`);
             setData(result.data);
+            console.log(data[0].board_title);
         };
 
         fetchData();
-    }, [b_idx]);
+    }, [id]);
 
     if (!data) {
         return <div>Loading...</div>;
@@ -25,8 +26,9 @@ const BoardView = () => {
 
     return (
         <div>
-            <h1>제목</h1>
-            <p>내용</p>
+            <h1>{data[0].board_idx}</h1>
+            <h3>{data[0].board_title}</h3>
+            <p>{data[0].board_content}</p>
         </div>
     );
 };
