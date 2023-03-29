@@ -32,4 +32,7 @@ public interface BoardMapper {
 
     @Select("select * from tb_board where board_idx=#{b_idx}")
     public List<tb_board> boardDetail(Integer b_idx);
+
+    @Delete("delete from tb_board where board_idx=#{b_idx}")
+    public int boardDelete(Integer b_idx);
 }

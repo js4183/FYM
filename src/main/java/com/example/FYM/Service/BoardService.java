@@ -52,4 +52,13 @@ public class BoardService {
     public List<tb_board> boardDetail(Integer b_idx){
         return boardMapper.boardDetail(b_idx);
     }
+
+    public String boardDelete(Integer b_idx){
+        int res = boardMapper.boardDelete(b_idx);
+        if(res == 1){
+            return "success";
+        }else{
+            return "fail";
+        }
+    }
 }

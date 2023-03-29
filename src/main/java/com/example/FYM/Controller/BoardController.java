@@ -71,4 +71,14 @@ public class BoardController {
     public List<tb_board> boardDetail(@PathVariable("b_idx") Integer b_idx){
         return boardService.boardDetail(b_idx);
     }
+
+    @PostMapping("/delete")
+    public String boardDelete(@RequestBody Map<String, String> map){
+        Integer b_idx = Integer.valueOf(map.get("b_idx"));
+//        System.out.println("map:"+map);
+//        System.out.println("b_idx:"+map.get("b_idx"));
+//        System.out.println(b_idx);
+
+        return boardService.boardDelete(b_idx);
+    }
 }
