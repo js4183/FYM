@@ -86,4 +86,9 @@ public class BoardController {
     public List<tb_board> postsDetail(@PathVariable("b_idx") Integer b_idx){
         return boardService.postsDetail(b_idx);
     }
+
+    @PostMapping("/editdo")
+    public int postsEdit(@RequestBody tb_board data){
+        return boardService.postsEdit(data);
+    }
 }

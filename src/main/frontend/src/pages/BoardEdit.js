@@ -24,23 +24,21 @@ const BoardEdit = () => {
     const { id } = useParams();
 
     const [data, setData] = useState(null);
-    const [b_idx, setB_idx] = useState(null);
     const [post, setPost] = useState({
-        board_idx: b_idx,
-        title : '',
-        content : '',
+        board_idx: null,
+        board_title : '',
+        board_content : '',
     });
 
     useEffect(() => {
-        setB_idx(id);
         const fetchData = async () => {
             const result = await axios.get(`/board/posts/${id}`);
             setData(result.data);
             setPost({
-                board_idx: b_idx,
-                title: data[0].board_title,
-                content: data[0].board_content,
-            })
+                board_idx: id,
+                board_title: result.data[0].board_title,
+                board_content: result.data[0].board_content,
+            });
         };
         fetchData();
     }, [id]);
@@ -57,9 +55,9 @@ const BoardEdit = () => {
     const editdo = () => {
         axios.post("/board/editdo",post)
             .then((res)=>{
-                console.log(res);
+                navigate(`/board/view/${id}`)
             }).catch((err)=>{
-                console.log(err);
+            console.log(err);
         })
     }
 
@@ -69,8 +67,8 @@ const BoardEdit = () => {
 
     return (
         <BoardLayout>
-            <input placeholder="제목" name="title" onChange={getValue} type="text" value={post.title} />
-            <textarea placeholder="내용" name="content" onChange={getValue} value={post.content} />
+            <input placeholder="제목" name="board_title" onChange={getValue} type="text" value={post.board_title} />
+            <textarea placeholder="내용" name="board_content" onChange={getValue} value={post.board_content} />
             <button onClick={editdo}>수정완료</button>
         </BoardLayout>
     );

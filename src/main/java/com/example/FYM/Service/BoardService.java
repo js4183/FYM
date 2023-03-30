@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BoardService {
@@ -64,5 +65,9 @@ public class BoardService {
 
     public List<tb_board> postsDetail(Integer b_idx){
         return boardMapper.postsDetail(b_idx);
+    }
+
+    public int postsEdit(tb_board data){
+        return boardMapper.postsEdit(data);
     }
 }

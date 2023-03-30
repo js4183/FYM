@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface BoardMapper {
@@ -38,4 +39,7 @@ public interface BoardMapper {
 
     @Select("select * from tb_board where board_idx=#{b_idx}")
     public List<tb_board> postsDetail(Integer b_idx);
+
+    @Update("update tb_board set board_title=#{board_title}, board_content=#{board_content} where board_idx=#{board_idx}")
+    public int postsEdit(tb_board data);
 }
