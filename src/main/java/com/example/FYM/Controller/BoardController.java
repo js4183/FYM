@@ -2,6 +2,7 @@ package com.example.FYM.Controller;
 
 import com.example.FYM.Model.Board;
 import com.example.FYM.Model.Meeting;
+import org.springframework.data.domain.Page;
 import com.example.FYM.Model.tb_board;
 import com.example.FYM.Service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,9 +63,13 @@ public class BoardController {
         return boardService.boardWritePro(TC);
     }
 
+//    @GetMapping("/list")
+//    public List<tb_board> boardList(){
+//        return boardService.boardList();
+//    }
     @GetMapping("/list")
-    public List<tb_board> boardList(){
-        return boardService.boardList();
+    public Page<tb_board> boardList(@RequestParam(defaultValue = "1") int page){
+        return boardService.boardList(page);
     }
 
     @GetMapping("/view/{b_idx}")

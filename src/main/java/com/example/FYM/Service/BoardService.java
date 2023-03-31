@@ -4,8 +4,12 @@ import com.example.FYM.Mapper.BoardMapper;
 import com.example.FYM.Model.Board;
 import com.example.FYM.Model.tb_board;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,8 +50,12 @@ public class BoardService {
         }
     }
 
-    public List<tb_board> boardList(){
-        return boardMapper.boardList();
+//    public List<tb_board> boardList(){
+//        return boardMapper.boardList();
+//    }
+    public Page<tb_board> boardList(int page){
+        PageRequest pageRequest = PageRequest.of(page - 1, 10, Sort.by(Sort.Direction.DESC, "board_idx"));
+        return boardMapper.boardList((Pageable) pageRequest);
     }
 
     public List<tb_board> boardDetail(Integer b_idx){
