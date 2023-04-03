@@ -1,28 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, {useEffect, useState} from 'react';
+import styled from 'styled-components';
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
+
+const BoardListLayout = styled.div`
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 40px;
+`;
 
 const BoardList = () => {
-    const [page, setPage] = useState(1); // 현재 페이지 번호
-    const [list, setList] = useState([]); // 게시물 목록
-    const [totalPages, setTotalPages] = useState(0); // 전체 페이지 수
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        axios.get(`/board/list?page=${page}`)
-            .then(response => {
-                setList(response.data.list);
-                setTotalPages(response.data.totalPages);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }, [page]);
+    const [list, setList] = useState([]);
 
-    const handlePageChange = newPage => {
-        setPage(newPage);
+    useEffect(()=>{
+        axios.get("/board/list").then((res)=>{
+            console.log(res.data);
+            setList(res.data);
+        }).catch((err)=>{
+            console.log(err);
+        })
+    },[])
+
+    const handleViewClick = (id) => {
+        navigate(`/board/view/${id}`);
     };
 
     return (
-        <div>
+        <BoardListLayout>
             <table>
                 <thead>
                 <tr>
@@ -32,8 +38,8 @@ const BoardList = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {list.map(item => (
-                    <tr key={item.board_idx}>
+                {list.map((item) => (
+                    <tr key={item.board_idx} onClick={() => handleViewClick(item.board_idx)}>
                         <td>{item.board_idx}</td>
                         <td>{item.board_title}</td>
                         <td>{item.board_content}</td>
@@ -41,14 +47,7 @@ const BoardList = () => {
                 ))}
                 </tbody>
             </table>
-            <div>
-                {Array.from({ length: totalPages }, (_, index) => (
-                    <button key={index} onClick={() => handlePageChange(index + 1)}>
-                        {index + 1}
-                    </button>
-                ))}
-            </div>
-        </div>
+        </BoardListLayout>
     );
 };
 

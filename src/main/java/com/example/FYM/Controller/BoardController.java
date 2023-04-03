@@ -63,14 +63,14 @@ public class BoardController {
         return boardService.boardWritePro(TC);
     }
 
-//    @GetMapping("/list")
-//    public List<tb_board> boardList(){
-//        return boardService.boardList();
-//    }
     @GetMapping("/list")
-    public Page<tb_board> boardList(@RequestParam(defaultValue = "1") int page){
-        return boardService.boardList(page);
+    public List<tb_board> boardList(){
+        return boardService.boardList();
     }
+//    @GetMapping("/list")
+//    public Page<tb_board> boardList(@RequestParam(defaultValue = "1") int page){
+//        return boardService.boardList(page);
+//    }
 
     @GetMapping("/view/{b_idx}")
     public List<tb_board> boardDetail(@PathVariable("b_idx") Integer b_idx){

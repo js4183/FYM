@@ -30,11 +30,11 @@ public interface BoardMapper {
     @Insert("insert into tb_board(board_idx, board_title, board_content) values(null, #{title}, #{content})")
     public int boardWritePro(HashMap<String, String> TC);
 
-//    @Select("select * from tb_board")
-//    public List<tb_board> boardList();
+    @Select("select * from tb_board")
+    public List<tb_board> boardList();
 
-    @Select("SELECT * FROM tb_board")
-    public Page<tb_board> boardList(Pageable pageable);
+//    @Select("SELECT * FROM tb_board")
+//    public Page<tb_board> boardList(Pageable pageable);
 
     @Select("select * from tb_board where board_idx=#{b_idx}")
     public List<tb_board> boardDetail(Integer b_idx);

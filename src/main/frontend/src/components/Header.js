@@ -198,6 +198,9 @@ const Header = () => {
             <StyledNavLink to="/board">
               <Text>게시판</Text>
             </StyledNavLink>
+            <StyledNavLink to="/chatpage">
+              <Text>채팅구현</Text>
+            </StyledNavLink>
           </Nav>
         <UserInfo>
             <UserInfoMyPageBtn to={`/mypage`}>

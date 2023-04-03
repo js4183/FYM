@@ -3,6 +3,8 @@ package com.example.FYM.Controller;
 
 import com.example.FYM.Model.ChatContent;
 import com.example.FYM.Model.Chatroom;
+import com.example.FYM.Model.MeetContent;
+import com.example.FYM.Model.Meeting;
 import com.example.FYM.Service.ChatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +28,12 @@ public class ChatController {
         return chatService.ChatList(user_nick);
     }
 
+    @PostMapping("/meetlist")
+    public List<Meeting> Meetlist(@RequestBody Map<String, String> meet){
+        String user_nick = meet.get("nick");
+        return chatService.MeetList(user_nick);
+    }
+
     @PostMapping("/chatsend")
     public void ChatSend(@RequestBody Map<String, String> data){
         HashMap<String, String> msg = new HashMap<>();
@@ -36,9 +44,22 @@ public class ChatController {
         chatService.ChatSend(msg);
     }
 
+    @PostMapping("/chattingsend")
+    public void ChattingSend(@RequestBody Map<String, String> data){
+        HashMap<String, String> msg = new HashMap<>();
+        msg.put("mt_idx", data.get("mt_idx"));
+        msg.put("talker", data.get("talker"));
+        msg.put("msg", data.get("msg"));
+    }
+
     @PostMapping("/chatcontent")
     public List<ChatContent> Chatting(@RequestBody Map<String, String> data){
         return chatService.Chatting(data.get("cr_idx"));
+    }
+
+    @PostMapping("/meetcontent")
+    public List<MeetContent> Meetting(@RequestBody Map<String, String> data){
+        return chatService.Meetting(data.get("mt_idx"));
     }
 
     @PostMapping("/roomexit")

@@ -3,6 +3,8 @@ package com.example.FYM.Service;
 import com.example.FYM.Mapper.ChatMapper;
 import com.example.FYM.Model.ChatContent;
 import com.example.FYM.Model.Chatroom;
+import com.example.FYM.Model.MeetContent;
+import com.example.FYM.Model.Meeting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +21,24 @@ public class ChatService {
         return chatMapper.ChatList(user_nick);
     }
 
+    public List<Meeting> MeetList(String user_nick){
+        return chatMapper.MeetList(user_nick);
+    }
+
     public void ChatSend(HashMap<String, String> msg){
         chatMapper.ChatSend(msg);
     }
 
+    public void ChattingSend(HashMap<String, String> msg){
+        chatMapper.ChattingSend(msg);
+    }
+
     public List<ChatContent> Chatting(String cr_idx){
         return chatMapper.Chatting(cr_idx);
+    }
+
+    public List<MeetContent> Meetting(String mt_idx){
+        return chatMapper.Meetting(mt_idx);
     }
 
     public void RoomExit(String cr_idx){

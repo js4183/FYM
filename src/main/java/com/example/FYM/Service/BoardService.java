@@ -50,13 +50,13 @@ public class BoardService {
         }
     }
 
-//    public List<tb_board> boardList(){
-//        return boardMapper.boardList();
-//    }
-    public Page<tb_board> boardList(int page){
-        PageRequest pageRequest = PageRequest.of(page - 1, 10, Sort.by(Sort.Direction.DESC, "board_idx"));
-        return boardMapper.boardList((Pageable) pageRequest);
+    public List<tb_board> boardList(){
+        return boardMapper.boardList();
     }
+//    public Page<tb_board> boardList(int page){
+//        PageRequest pageRequest = PageRequest.of(page - 1, 10, Sort.by(Sort.Direction.DESC, "board_idx"));
+//        return boardMapper.boardList((Pageable) pageRequest);
+//    }
 
     public List<tb_board> boardDetail(Integer b_idx){
         return boardMapper.boardDetail(b_idx);
